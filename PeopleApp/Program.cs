@@ -24,7 +24,7 @@ namespace PeopleApp
 
             hi.wonders = Wonders.Kotahena| Wonders.Dehiwala;
 
-            WriteLine(hi.wonders);
+            WriteLine(sizeof(uint));
         }
     }
 }
