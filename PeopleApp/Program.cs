@@ -7,6 +7,7 @@ namespace PeopleApp
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Person hi = new Person();
@@ -22,9 +23,6 @@ namespace PeopleApp
 
             WriteLine($"{hi.Name} is {hi.DateOfBirth:d/MM/yyyy}");
 
-            hi.wonders = Wonders.Kotahena| Wonders.Dehiwala;
-
-            WriteLine(sizeof(uint));
         }
     }
 }
