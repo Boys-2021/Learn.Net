@@ -22,6 +22,7 @@ namespace PeopleApp
 };
 
             WriteLine($"{hi.Name} is {hi.DateOfBirth:d/MM/yyyy}");
+  WriteLine($"{hi.Name} is {hi.GetCheck()}");
 
         }
     }

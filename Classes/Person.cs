@@ -12,5 +12,9 @@ namespace Classes.shared
         public Wonders wonders;
 
         public List<Person> Children = new List<Person>();
+
+        public (string,int) GetCheck(){
+            return("adrian",5);
+        }
     }
 }
