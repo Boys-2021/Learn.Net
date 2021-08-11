@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Classes.shared
 {
-    public class Person : System.Object
+    public partial class Person
     {
 
         public string Name;
@@ -13,7 +13,7 @@ namespace Classes.shared
 
         public List<Person> Children = new List<Person>();
 
-        public (string,int) GetCheck(){
+        public static (string,int) GetCheck(){
             return("adrian",5);
         }
     }

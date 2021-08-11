@@ -15,9 +15,7 @@ namespace PeopleApp
                 DateOfBirth = new DateTime(2000,10,5)
             };
             
-            WriteLine(
-                $"{adrian.Origin} {adrian.Greetings} {adrian.Age}"
-            );
+            
         }
 
     }
