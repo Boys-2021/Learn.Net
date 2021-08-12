@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using RolePlay.Models;
+using RolePlay.Services.CharacterService;
 
 namespace RolePlay.Controllers
 {
@@ -10,20 +12,25 @@ namespace RolePlay.Controllers
     public class CharacterController :ControllerBase
     {   
 
-        public static List<Character> characters = new List<Character>{
-            new Character(),
-            new Character{
-                Name = "Adriana",
-                Charac = Role.Queen
-            }};
+        private static ICharacterInterface characterService;
+        public CharacterController(ICharacterInterface characterServic)
+        {
+            characterService = characterServic;
+        }
 
-        [HttpGet("GetAd")]
+        [HttpGet]
         public ActionResult<List<Character>> Get(){
-            return Ok(characters);
+            return Ok(characterService.GetAllCharacters());
         }
         
-        public ActionResult<List<Character>> GetSingle(){
-            return Ok(characters[0]);
+        [HttpGet("{id}")]
+        public ActionResult<Character> GetSingle(int id){
+            return Ok(characterService.GetCharacterById(id));
+        }
+
+        [HttpPost]
+        public ActionResult<List<Character>> AddCharacter(Character newCharacter){
+            return Ok(characterService.AddCharacter(newCharacter));
         }
         
     }
