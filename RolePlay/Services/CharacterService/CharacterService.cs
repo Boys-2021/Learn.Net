@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using RolePlay.Dtos.Character;
 using RolePlay.Models;
 
 namespace RolePlay.Services.CharacterService
@@ -16,20 +18,32 @@ namespace RolePlay.Services.CharacterService
             }
         };
 
-        public async Task<List<Character>> AddCharacter(Character newCharacter)
+        private readonly IMapper mapper;
+
+        public CharacterService(IMapper map)
         {
-            characters.Add(newCharacter);
-            return characters;
+            mapper = map;
         }
 
-        public async Task<List<Character>> GetAllCharacters()
+        public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
         {
-            return characters;
+            characters.Add(mapper.Map<Character>(newCharacter));
+            var response = new ServiceResponse<List<GetCharacterDto>>();
+            response.Data = characters.Select(c => mapper.Map<GetCharacterDto>(c)).ToList();
+            return response;
         }
 
-        public async Task<Character> GetCharacterById(int id)
+        public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
         {
-            return characters.FirstOrDefault(c => c.Id == id);
+            var response = new ServiceResponse<List<GetCharacterDto>>();
+            response.Data = characters.Select(c => mapper.Map<GetCharacterDto>(c)).ToList();
+            return response;
+        }
+
+        public async Task<ServiceResponse<GetCharacterDto>> GetCharacterById(int id)
+        {
+            var response = new ServiceResponse<GetCharacterDto>{Data = mapper.Map<GetCharacterDto>(characters.FirstOrDefault(c => c.Id == id))};
+            return response;
         }
     }
 }

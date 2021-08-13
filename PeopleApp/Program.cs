@@ -1,7 +1,7 @@
 ﻿using System;
 using static System.Console;
 using Classes.shared;
-
+using Classes;
 
 namespace PeopleApp
 {
@@ -10,12 +10,9 @@ namespace PeopleApp
 
         static void Main(string[] args)
         {
-            Person adrian = new Person{
-                Name ="Adrian",
-                DateOfBirth = new DateTime(2000,10,5)
-            };
-            
-            
+            Trial Try = new Trial{Id = "hi"};
+            Trial Tmy = new Trial{Id = "hello"};
+            WriteLine(Try.Id + Tmy.Id);
         }
 
     }
