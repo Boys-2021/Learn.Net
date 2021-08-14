@@ -34,5 +34,9 @@ namespace RolePlay.Controllers
             return Ok(await characterService.AddCharacter(newCharacter));
         }
         
+        [HttpPut]
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> UpdateCharacter(UpdateCharacterDto updateCharacter){
+            return Ok(await characterService.UpdateCharacter(updateCharacter));
+        }
     }
 }
