@@ -2,6 +2,7 @@
 using static System.Console;
 using Classes.shared;
 using Classes;
+using PeopleApp.Classes;
 
 namespace PeopleApp
 {
@@ -10,9 +11,9 @@ namespace PeopleApp
 
         static void Main(string[] args)
         {
-            Trial Try = new Trial{Id = "hi"};
-            Trial Tmy = new Trial{Id = "hello"};
-            WriteLine(Try.Id + Tmy.Id);
+            Pokemon pikachu = new Pokemon{Name = "Pikachu",Color = "Yellow"};
+            var (name,color) = pikachu;
+            WriteLine(format:"{0} is {1} color",arg0:name,arg1:color);
         }
 
     }
