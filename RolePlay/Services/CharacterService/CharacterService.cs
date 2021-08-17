@@ -36,6 +36,20 @@ namespace RolePlay.Services.CharacterService
             return response;
         }
 
+        public async Task<ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id)
+        {
+            var response = new ServiceResponse<List<GetCharacterDto>>();
+            try{
+                Character current = characters.First(c=> c.Id == id);
+                characters.Remove(current);
+                response.Data = characters.Select(c => mapper.Map<GetCharacterDto>(current)).ToList();
+            }catch(Exception ex){
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            return response;
+        }
+
         public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
         {
             var response = new ServiceResponse<List<GetCharacterDto>>();

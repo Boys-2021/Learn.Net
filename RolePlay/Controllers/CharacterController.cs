@@ -36,7 +36,12 @@ namespace RolePlay.Controllers
         
         [HttpPut]
         public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> UpdateCharacter(UpdateCharacterDto updateCharacter){
-            return Ok(await characterService.UpdateCharacter(updateCharacter));
+            var response = await characterService.UpdateCharacter(updateCharacter);
+            if(response.Data == null){
+                return NotFound(response);
+            }else{
+                return Ok(response);
+            }
         }
     }
 }
