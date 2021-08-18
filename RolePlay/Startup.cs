@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RolePlay.Services.CharacterService;
 using AutoMapper;
+using RolePlay.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RolePlay
 {
@@ -27,11 +29,15 @@ namespace RolePlay
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultString"))
+            );
             services.AddControllers();
 
             services.AddScoped<ICharacterInterface,CharacterService>();
 
             services.AddAutoMapper(typeof(Startup));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
