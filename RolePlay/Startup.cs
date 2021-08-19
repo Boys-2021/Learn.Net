@@ -36,7 +36,7 @@ namespace RolePlay
 
             services.AddScoped<ICharacterInterface,CharacterService>();
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup)) ;
 
         }
 
